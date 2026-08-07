@@ -3,6 +3,9 @@ module ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob {
     requires javafx.fxml;
 
 
-    opens ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob to javafx.fxml;
-    exports ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob;
+    opens ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.controller to javafx.fxml;
+    exports ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.controller;
+    exports ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.model;
+    exports ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.service;
+    exports ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.repository;
 }
