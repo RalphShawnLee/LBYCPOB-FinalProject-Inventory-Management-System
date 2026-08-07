@@ -12,6 +12,6 @@ public class PurchaseOrderController {
 
     @FXML
     protected void onCreatePurchaseOrderButtonClick() {
-        // TODO
+        // write code here
     }
 }

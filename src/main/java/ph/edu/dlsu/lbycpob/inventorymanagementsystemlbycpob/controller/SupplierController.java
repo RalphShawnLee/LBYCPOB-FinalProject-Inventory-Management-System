@@ -12,6 +12,6 @@ public class SupplierController {
 
     @FXML
     protected void onAddSupplierButtonClick() {
-        // TODO
+        // write code here
     }
 }

@@ -12,6 +12,6 @@ public class ReportController {
 
     @FXML
     protected void onGenerateReportButtonClick() {
-        // TODO
+        // write code here
     }
 }

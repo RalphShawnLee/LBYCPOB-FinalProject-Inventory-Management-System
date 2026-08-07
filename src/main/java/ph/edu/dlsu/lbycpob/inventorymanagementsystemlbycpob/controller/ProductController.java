@@ -12,6 +12,6 @@ public class ProductController {
 
     @FXML
     protected void onAddProductButtonClick() {
-        // TODO
+        // write code here
     }
 }

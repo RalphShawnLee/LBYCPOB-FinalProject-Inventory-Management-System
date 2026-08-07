@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob/ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.HelloApplication
+                                ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob/ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.MainApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
