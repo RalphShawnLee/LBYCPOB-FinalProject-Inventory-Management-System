@@ -12,4 +12,6 @@
 
     <Label fx:id="summaryLabel" text="Dashboard"/>
     <Button fx:id="refreshButton" text="Refresh" onAction="#onRefreshButtonClick"/>
+    <Button fx:id="manageProductsButton" text="Manage Products" onAction="#onManageProductsClick"/>
+    <Button fx:id="manageSuppliersButton" text="Manage Suppliers" onAction="#onManageSuppliersClick"/>
 </VBox>
