@@ -15,7 +15,6 @@ public class AuthService {
     public AuthService(UserRepository userRepository) {
         this.userRepository = userRepository;
         if (userRepository.findByUsername("admin").isEmpty()) {
-            // ponytail: dev-only seeded credential, real user management out of scope
             userRepository.save(new User("admin", hash("admin123"), UserRole.ADMIN));
         }
     }
