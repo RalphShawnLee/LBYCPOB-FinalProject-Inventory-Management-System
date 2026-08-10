@@ -5,7 +5,7 @@ import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.model.SalesOrder;
 import java.util.List;
 
 public interface SalesOrderRepository {
-    List findAll();
+    List<SalesOrder> findAll();
 
     void save(SalesOrder salesOrder);
 }

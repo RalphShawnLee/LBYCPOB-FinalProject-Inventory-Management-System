@@ -5,7 +5,7 @@ import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.model.PurchaseOrder;
 import java.util.List;
 
 public interface PurchaseOrderRepository {
-    List findAll();
+    List<PurchaseOrder> findAll();
 
     void save(PurchaseOrder purchaseOrder);
 }

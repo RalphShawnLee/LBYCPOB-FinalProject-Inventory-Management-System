@@ -5,7 +5,7 @@ import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.model.StockMovement;
 import java.util.List;
 
 public interface StockMovementRepository {
-    List findAll();
+    List<StockMovement> findAll();
 
     void save(StockMovement stockMovement);
 }
