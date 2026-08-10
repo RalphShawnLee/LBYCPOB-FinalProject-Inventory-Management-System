@@ -15,6 +15,14 @@ public class StockMovement {
         this.reference = reference;
         this.timestamp = LocalDateTime.now();
     }
+
+    public StockMovement(Product product, MovementType type, int quantity, String reference, LocalDateTime timestamp) {
+        this.product = product;
+        this.type = type;
+        this.quantity = quantity;
+        this.reference = reference;
+        this.timestamp = timestamp;
+    }
     public Product getProduct() {
         return product;
     }

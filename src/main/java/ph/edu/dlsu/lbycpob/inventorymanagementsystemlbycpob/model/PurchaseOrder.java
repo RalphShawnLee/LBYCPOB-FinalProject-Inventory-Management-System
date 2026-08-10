@@ -21,6 +21,18 @@ public class PurchaseOrder {
         this.status = OrderStatus.PENDING;
     }
 
+    public PurchaseOrder(int id, Supplier supplier, List<PurchaseOrderLine> lines, OrderStatus status, LocalDateTime createdAt) {
+        this.id = id;
+        this.supplier = supplier;
+        this.lines = lines;
+        this.createdAt = createdAt;
+        this.status = status;
+    }
+
+    public static void ensureCounterAtLeast(int value) {
+        COUNTER.updateAndGet(current -> Math.max(current, value));
+    }
+
     public int getId() {
         return id;
     }
