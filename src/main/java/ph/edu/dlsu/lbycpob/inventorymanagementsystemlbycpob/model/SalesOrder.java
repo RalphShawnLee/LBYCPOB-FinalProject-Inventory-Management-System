@@ -19,6 +19,17 @@ public class SalesOrder {
         this.status = OrderStatus.PENDING;
     }
 
+    public SalesOrder(int id, List<SalesOrderLine> lines, OrderStatus status, LocalDateTime createdAt) {
+        this.id = id;
+        this.lines = lines;
+        this.createdAt = createdAt;
+        this.status = status;
+    }
+
+    public static void ensureCounterAtLeast(int value) {
+        COUNTER.updateAndGet(current -> Math.max(current, value));
+    }
+
     public int getId() {
         return id;
     }
