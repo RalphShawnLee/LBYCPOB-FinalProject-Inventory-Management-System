@@ -4,12 +4,14 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.repository.InMemoryProductRepository;
-import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.repository.InMemoryPurchaseOrderRepository;
-import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.repository.InMemorySalesOrderRepository;
-import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.repository.InMemoryStockMovementRepository;
-import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.repository.InMemorySupplierRepository;
-import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.repository.InMemoryUserRepository;
+import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.repository.JsonProductRepository;
+import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.repository.JsonPurchaseOrderRepository;
+import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.repository.JsonSalesOrderRepository;
+import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.repository.JsonStockMovementRepository;
+import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.repository.JsonSupplierRepository;
+import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.repository.JsonUserRepository;
+import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.repository.ProductRepository;
+import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.repository.SupplierRepository;
 import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.service.AuthService;
 import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.service.NotificationService;
 import ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.service.ProductService;
@@ -35,12 +37,20 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         primaryStage = stage;
-        authService = new AuthService(new InMemoryUserRepository());
-        productService = new ProductService(new InMemoryProductRepository());
-        supplierService = new SupplierService(new InMemorySupplierRepository());
-        stockMovementService = new StockMovementService(new InMemoryStockMovementRepository());
-        purchaseOrderService = new PurchaseOrderService(new InMemoryPurchaseOrderRepository(), stockMovementService);
-        salesOrderService = new SalesOrderService(new InMemorySalesOrderRepository(), stockMovementService);
+
+        ProductRepository productRepository = new JsonProductRepository("data/products.json");
+        SupplierRepository supplierRepository = new JsonSupplierRepository("data/suppliers.json");
+
+        authService = new AuthService(new JsonUserRepository("data/users.json"));
+        productService = new ProductService(productRepository);
+        supplierService = new SupplierService(supplierRepository);
+        stockMovementService = new StockMovementService(new JsonStockMovementRepository("data/stock-movements.json", productRepository));
+        purchaseOrderService = new PurchaseOrderService(
+                new JsonPurchaseOrderRepository("data/purchase-orders.json", productRepository, supplierRepository),
+                stockMovementService);
+        salesOrderService = new SalesOrderService(
+                new JsonSalesOrderRepository("data/sales-orders.json", productRepository),
+                stockMovementService);
         reportService = new ReportService(productService, stockMovementService);
         notificationService = new NotificationService();
 
