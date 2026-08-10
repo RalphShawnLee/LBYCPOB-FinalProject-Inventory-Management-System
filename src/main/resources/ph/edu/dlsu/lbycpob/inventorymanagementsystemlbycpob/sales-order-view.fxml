@@ -2,14 +2,42 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+<VBox alignment="CENTER" spacing="10.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="ph.edu.dlsu.lbycpob.inventorymanagementsystemlbycpob.controller.SalesOrderController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <TableView fx:id="salesOrderTable"/>
-    <Button fx:id="createSalesOrderButton" text="Create Sales Order" onAction="#onCreateSalesOrderButtonClick"/>
+    <TableView fx:id="salesOrderTable" prefHeight="150.0">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID"/>
+            <TableColumn fx:id="statusColumn" text="Status"/>
+            <TableColumn fx:id="createdAtColumn" text="Created"/>
+        </columns>
+    </TableView>
+    <Button fx:id="fulfillOrderButton" text="Fulfill Selected" onAction="#onFulfillOrderButtonClick"/>
+
+    <HBox alignment="CENTER" spacing="5.0">
+        <ComboBox fx:id="productComboBox" promptText="Product"/>
+        <TextField fx:id="quantityField" promptText="Quantity"/>
+        <Button fx:id="addLineButton" text="Add Line" onAction="#onAddLineButtonClick"/>
+    </HBox>
+
+    <TableView fx:id="pendingLinesTable" prefHeight="100.0">
+        <columns>
+            <TableColumn fx:id="lineProductColumn" text="Product"/>
+            <TableColumn fx:id="lineQuantityColumn" text="Quantity"/>
+        </columns>
+    </TableView>
+
+    <HBox alignment="CENTER" spacing="10.0">
+        <Button fx:id="createOrderButton" text="Create Order" onAction="#onCreateOrderButtonClick"/>
+        <Button fx:id="backButton" text="Back to Dashboard" onAction="#onBackButtonClick"/>
+    </HBox>
 </VBox>
