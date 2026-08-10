@@ -35,7 +35,6 @@ final class JsonUtil {
         return m.find() ? Double.parseDouble(m.group(1)) : null;
     }
 
-    /** Returns the raw {...} substring of each object inside the array field named key. */
     static List<String> extractArray(String json, String key) {
         int keyIndex = json.indexOf("\"" + key + "\"");
         if (keyIndex < 0) {
@@ -46,7 +45,6 @@ final class JsonUtil {
         return splitObjects(json.substring(arrayStart + 1, arrayEnd));
     }
 
-    /** Splits raw text containing consecutive {...} objects into a list of object substrings. */
     static List<String> splitObjects(String text) {
         List<String> result = new ArrayList<>();
         int i = 0;

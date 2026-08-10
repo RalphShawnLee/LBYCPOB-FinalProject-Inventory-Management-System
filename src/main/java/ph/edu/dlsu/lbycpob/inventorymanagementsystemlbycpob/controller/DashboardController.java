@@ -27,7 +27,6 @@ public class DashboardController {
     protected void onRefreshButtonClick() {
         long lowStockCount = MainApplication.productService.getLowStockCount();
         double totalValue = MainApplication.productService.getTotalInventoryValue();
-        // ponytail: recent stock movements needs StockMovementService, a later feature
         summaryLabel.setText(String.format("Low stock items: %d | Total inventory value: %.2f", lowStockCount, totalValue));
     }
 
