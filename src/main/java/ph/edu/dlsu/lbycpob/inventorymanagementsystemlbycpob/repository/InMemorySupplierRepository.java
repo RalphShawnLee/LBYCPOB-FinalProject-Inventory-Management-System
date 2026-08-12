@@ -17,4 +17,8 @@ public class InMemorySupplierRepository implements SupplierRepository {
     public void save(Supplier supplier) {
         suppliers.add(supplier);
     }
+
+    @Override
+    public void update(Supplier supplier) {
+    }
 }
