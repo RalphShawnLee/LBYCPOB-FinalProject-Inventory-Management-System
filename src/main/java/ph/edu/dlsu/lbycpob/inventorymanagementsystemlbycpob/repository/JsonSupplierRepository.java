@@ -29,6 +29,11 @@ public class JsonSupplierRepository implements SupplierRepository {
         persist();
     }
 
+    @Override
+    public void update(Supplier supplier) {
+        persist();
+    }
+
     private void load() {
         if (!Files.exists(file)) {
             return;

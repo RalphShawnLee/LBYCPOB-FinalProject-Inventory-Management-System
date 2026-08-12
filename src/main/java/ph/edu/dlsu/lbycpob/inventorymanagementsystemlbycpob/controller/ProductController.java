@@ -98,15 +98,20 @@ public class ProductController {
             return;
         }
         try {
-            selected.setSku(skuField.getText());
-            selected.setName(nameField.getText());
-            selected.setCategory(categoryField.getText());
-            selected.setPrice(Double.parseDouble(priceField.getText()));
-            selected.setQuantity(Integer.parseInt(quantityField.getText()));
-            selected.setReorderThreshold(Integer.parseInt(reorderThresholdField.getText()));
+            MainApplication.productService.updateProduct(
+                    selected,
+                    skuField.getText(),
+                    nameField.getText(),
+                    categoryField.getText(),
+                    Double.parseDouble(priceField.getText()),
+                    Integer.parseInt(quantityField.getText()),
+                    Integer.parseInt(reorderThresholdField.getText())
+            );
             productTable.refresh();
         } catch (NumberFormatException e) {
             new Alert(Alert.AlertType.ERROR, "Price, quantity, and reorder threshold must be numbers").showAndWait();
+        } catch (IllegalArgumentException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
         }
     }
 

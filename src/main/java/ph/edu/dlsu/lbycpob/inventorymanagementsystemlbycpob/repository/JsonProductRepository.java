@@ -29,6 +29,11 @@ public class JsonProductRepository implements ProductRepository {
         persist();
     }
 
+    @Override
+    public void update(Product product) {
+        persist();
+    }
+
     private void load() {
         if (!Files.exists(file)) {
             return;

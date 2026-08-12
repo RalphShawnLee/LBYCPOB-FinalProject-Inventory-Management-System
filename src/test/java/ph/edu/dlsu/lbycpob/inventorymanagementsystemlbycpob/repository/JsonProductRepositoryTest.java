@@ -33,4 +33,17 @@ class JsonProductRepositoryTest {
         assertEquals(7, product.getQuantity());
         assertEquals(3, product.getReorderThreshold());
     }
+
+    @Test
+    void updatedProductSurvivesReloadFromDisk() {
+        JsonProductRepository first = new JsonProductRepository(file.toString());
+        first.save(new Product("SKU-1", "Widget", "Tools", 12.5, 7, 3));
+        Product saved = first.findAll().get(0);
+        saved.setQuantity(20);
+        first.update(saved);
+
+        JsonProductRepository reloaded = new JsonProductRepository(file.toString());
+
+        assertEquals(20, reloaded.findAll().get(0).getQuantity());
+    }
 }

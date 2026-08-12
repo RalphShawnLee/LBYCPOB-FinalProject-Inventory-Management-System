@@ -74,10 +74,17 @@ public class SupplierController {
             new Alert(Alert.AlertType.WARNING, "Select a supplier to update").showAndWait();
             return;
         }
-        selected.setName(nameField.getText());
-        selected.setEmail(emailField.getText());
-        selected.setPhone(phoneField.getText());
-        supplierTable.refresh();
+        try {
+            MainApplication.supplierService.updateSupplier(
+                    selected,
+                    nameField.getText(),
+                    emailField.getText(),
+                    phoneField.getText()
+            );
+            supplierTable.refresh();
+        } catch (IllegalArgumentException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
+        }
     }
 
     @FXML

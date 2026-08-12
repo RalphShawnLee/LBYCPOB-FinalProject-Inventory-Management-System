@@ -8,4 +8,6 @@ public interface ProductRepository {
     List<Product> findAll();
 
     void save(Product product);
+
+    void update(Product product);
 }

@@ -24,4 +24,14 @@ public class SupplierService {
         supplierRepository.save(supplier);
         return supplier;
     }
+
+    public void updateSupplier(Supplier supplier, String name, String email, String phone) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Supplier name is required");
+        }
+        supplier.setName(name);
+        supplier.setEmail(email);
+        supplier.setPhone(phone);
+        supplierRepository.update(supplier);
+    }
 }

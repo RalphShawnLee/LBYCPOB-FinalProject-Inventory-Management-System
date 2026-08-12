@@ -8,4 +8,6 @@ public interface SupplierRepository {
     List<Supplier> findAll();
 
     void save(Supplier supplier);
+
+    void update(Supplier supplier);
 }
